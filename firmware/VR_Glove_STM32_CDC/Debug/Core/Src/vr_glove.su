@@ -1,0 +1,7 @@
+vr_glove.c:3:6:ADC_Select_Channel	32	static
+vr_glove.c:13:9:VR_Glove_Calibration	24	static
+vr_glove.c:37:9:VR_Glove_Input	56	static
+vr_glove.c:60:9:VR_Glove_Scale	24	static
+vr_glove.c:72:9:VR_Glove_Serialization	112	static
+vr_glove.c:81:9:VR_Glove_Transmit	24	static
+vr_glove.c:88:9:VR_Glove_Gestures	16	static
