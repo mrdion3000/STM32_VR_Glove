@@ -1,8 +1,8 @@
 #ifndef _VR_GLOVE
 #define _VR_GLOVE
 #include "main.h"
-#define LED_OFF GPIO_PIN_RESET
-#define LED_ON GPIO_PIN_SET
+#define LED_OFF GPIO_PIN_SET
+#define LED_ON GPIO_PIN_RESET
 #define ANALOG_MAX 1023
 typedef struct
 {
