@@ -26,7 +26,7 @@ int16_t VR_Glove_Calibration(VR_Glove* vr_glove)
 	VR_Glove_Input(vr_glove);
 	for (int i = 0; i < 5; i++)
 	{
-		vr_glove->finger_calibr[i] =ANALOG_MAX/vr_glove->flex_sensor_rawdata[i]-vr_glove->finger_zero[i];
+		vr_glove->finger_calibr[i] =ANALOG_MAX/(vr_glove->flex_sensor_rawdata[i]-vr_glove->finger_zero[i]);
 	}
 	HAL_GPIO_WritePin(LED_GPIO_Port,LED_Pin,LED_OFF);
 	HAL_Delay(1000);
