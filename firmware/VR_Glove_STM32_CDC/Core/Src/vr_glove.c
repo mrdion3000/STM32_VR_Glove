@@ -4,7 +4,7 @@ void ADC_Select_Channel(uint32_t ch, VR_Glove* vr_glove) {
     ADC_ChannelConfTypeDef conf = {
         .Channel = ch,
         .Rank = 1,
-        .SamplingTime = ADC_SAMPLETIME_1CYCLE_5,
+        .SamplingTime = ADC_SAMPLETIME_28CYCLES_5,
     };
     if (HAL_ADC_ConfigChannel(vr_glove->hadc1, &conf) != HAL_OK) {
         Error_Handler();
