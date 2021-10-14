@@ -65,8 +65,8 @@ all: main-build
 main-build: VR_Glove_STM32_CDC.elf secondary-outputs
 
 # Tool invocations
-VR_Glove_STM32_CDC.elf: $(OBJS) $(USER_OBJS) /home/tasm32/STM32CubeIDE/workspace_1.7.0/VR_Glove_STM32_CDC/STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "VR_Glove_STM32_CDC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/tasm32/STM32CubeIDE/workspace_1.7.0/VR_Glove_STM32_CDC/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VR_Glove_STM32_CDC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+VR_Glove_STM32_CDC.elf: $(OBJS) $(USER_OBJS) /home/tasm32/STM32_VR_Glove/STM32_VR_Glove/firmware/VR_Glove_STM32_CDC/STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "VR_Glove_STM32_CDC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/tasm32/STM32_VR_Glove/STM32_VR_Glove/firmware/VR_Glove_STM32_CDC/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VR_Glove_STM32_CDC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

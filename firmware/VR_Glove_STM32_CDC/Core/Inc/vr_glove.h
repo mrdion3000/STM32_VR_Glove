@@ -18,7 +18,7 @@ typedef struct
 	uint16_t B_button;
 	uint16_t menu_button;
 	uint16_t finger_zero[5];
-	uint16_t finger_calibr[5];
+	float finger_calibr[5];
 	char serializedData[75];
 	ADC_HandleTypeDef* hadc1;
 
