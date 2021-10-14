@@ -4,7 +4,7 @@ This repo contains the STM32F103C8 firmware of the VR glove.
 Blue Pill stm32f103c8t6
 
 # Firmware
-The project was created in STMCubeIDE 
+The project was created in STM32CubeIDE 
 
 # Comunication
 USB virtual Com port
