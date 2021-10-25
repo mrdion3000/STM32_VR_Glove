@@ -94,8 +94,8 @@ int16_t VR_Glove_Serialization(VR_Glove* vr_glove)
 }
 int16_t VR_Glove_Transmit(VR_Glove* vr_glove)
 {
-	int buf_len = 75;
-	CDC_Transmit_FS(vr_glove->serializedData,buf_len);
+	//int buf_len = 75;
+	CDC_Transmit_FS(vr_glove->serializedData,strlen(vr_glove->serializedData));
 	return 0;
 }
 
