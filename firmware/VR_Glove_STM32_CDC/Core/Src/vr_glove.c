@@ -12,6 +12,11 @@ void ADC_Select_Channel(uint32_t ch, VR_Glove* vr_glove) {
 }
 int16_t VR_Glove_Calibration(VR_Glove* vr_glove)
 {
+	//после включения перчатки ждем когда загорится светодиод
+	//разжимаем пальцы, ждем кода светодиод погаснет
+	//снова загорится светодиод, сжимаем руку в кулак
+	//светодиод погас
+	//поздравляю - вы великолепны!
 	HAL_GPIO_WritePin(LED_GPIO_Port,LED_Pin,LED_ON);
 	HAL_Delay(2000);
 	VR_Glove_Input(vr_glove);
@@ -36,6 +41,7 @@ int16_t VR_Glove_Calibration(VR_Glove* vr_glove)
 
 int16_t VR_Glove_Input(VR_Glove* vr_glove)
 {
+	//здесь просто скучно опрашиваем семь каналов АЦП и четыре кнопки
 	uint32_t channels[7]={ADC_CHANNEL_0,ADC_CHANNEL_1,ADC_CHANNEL_2,ADC_CHANNEL_3,ADC_CHANNEL_4,ADC_CHANNEL_5,ADC_CHANNEL_6};
 
 	vr_glove->calib = 0;
@@ -59,6 +65,7 @@ int16_t VR_Glove_Input(VR_Glove* vr_glove)
 
 int16_t VR_Glove_Scale(VR_Glove* vr_glove)
 {
+	//всё что мы делали со сжиманием разжиманием нам приголдится здесь
 	int32_t d = 0;
 	for (int i = 0; i < 5; i++)
 	{
@@ -85,6 +92,7 @@ int16_t VR_Glove_Scale(VR_Glove* vr_glove)
 
 int16_t VR_Glove_Serialization(VR_Glove* vr_glove)
 {
+	//просто вставим наши данные в строку
 	sprintf(vr_glove->serializedData, "A%dB%dC%dD%dE%dF%dG%d%s%s%s%s%s%s%s%s\n",
 	  vr_glove->finger_position[0], vr_glove->finger_position[1], vr_glove->finger_position[2], vr_glove->finger_position[3], vr_glove->finger_position[4],
 	  vr_glove->joy_axis[0], vr_glove->joy_axis[1], vr_glove->joy_button?"H":"",
@@ -95,12 +103,15 @@ int16_t VR_Glove_Serialization(VR_Glove* vr_glove)
 int16_t VR_Glove_Transmit(VR_Glove* vr_glove)
 {
 	//int buf_len = 75;
+	//строку отправляем
 	CDC_Transmit_FS(vr_glove->serializedData,strlen(vr_glove->serializedData));
 	return 0;
 }
 
 int16_t VR_Glove_Gestures(VR_Glove* vr_glove)
 {
+	//здесь вычислим жесты
+	
 	vr_glove->grub = (vr_glove->finger_position[1]+vr_glove->finger_position[2]+vr_glove->finger_position[3]+vr_glove->finger_position[4]) / 4 <= ANALOG_MAX/2 ? 0:1;
 	vr_glove->pinch = (vr_glove->finger_position[0]+vr_glove->finger_position[1]) / 2 <= ANALOG_MAX/2 ? 0:1;
 	vr_glove->trigger = (vr_glove->finger_position[1]) <= ANALOG_MAX/2 ? 0:1;
