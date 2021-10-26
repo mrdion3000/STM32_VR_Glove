@@ -64,9 +64,9 @@ void Error_Handler(void);
 #define joy_button_GPIO_Port GPIOB
 #define A_Pin GPIO_PIN_1
 #define A_GPIO_Port GPIOB
-#define B_Pin GPIO_PIN_2
+#define B_Pin GPIO_PIN_10
 #define B_GPIO_Port GPIOB
-#define menu_Pin GPIO_PIN_10
+#define menu_Pin GPIO_PIN_11
 #define menu_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
