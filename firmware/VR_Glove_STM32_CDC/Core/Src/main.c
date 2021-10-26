@@ -45,7 +45,7 @@
 ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
-VR_Glove vr_glove1 = {{255,255,255,255,255},{0,0,0,0,0,0,0},{512,512},0,0,0,0,0,0,0,0,{0,0,0,0,0},{1.0,1.0,1.0,1.0,1.0},"",&hadc1};
+VR_Glove vr_glove1 = {{255,255,255,255,255},{0,0,0,0,0,0,0},{512,512},0,0,0,0,0,0,0,0,{0,0,0,0,0},{1.0,1.0,1.0,1.0,1.0},"",&hadc1}; //создаем структуру перчатки и заполняем её какими то начальными значениями
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,7 +92,7 @@ int main(void)
   MX_ADC1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-  VR_Glove_Calibration(&vr_glove1);
+  VR_Glove_Calibration(&vr_glove1); //калибруем перчатку
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,12 +100,12 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  VR_Glove_Input(&vr_glove1);
-	  VR_Glove_Scale(&vr_glove1);
-	  VR_Glove_Gestures(&vr_glove1);
-	  VR_Glove_Serialization(&vr_glove1);
-	  VR_Glove_Transmit(&vr_glove1);
-	  HAL_Delay(10);
+	  VR_Glove_Input(&vr_glove1); //берем данные с ацп и дискретных входов 
+	  VR_Glove_Scale(&vr_glove1); //масштабируем
+	  VR_Glove_Gestures(&vr_glove1); //вычислим жесты
+	  VR_Glove_Serialization(&vr_glove1); //запихаем всё в строку
+	  VR_Glove_Transmit(&vr_glove1); //и отправили
+	  HAL_Delay(10); //отдыхаем
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
