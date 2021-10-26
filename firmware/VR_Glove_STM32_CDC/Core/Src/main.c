@@ -92,6 +92,8 @@ int main(void)
   MX_ADC1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+  HAL_GPIO_WritePin(LED_GPIO_Port,LED_Pin,LED_OFF);
+  HAL_Delay(5000);
   VR_Glove_Calibration(&vr_glove1); //калибруем перчатку
   /* USER CODE END 2 */
 
